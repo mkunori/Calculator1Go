@@ -45,6 +45,14 @@ public class Calc1GoView extends JFrame {
         display.setText(text);
     }
 
+    public void setDisplay(double value) {
+        if (value == (long)value) {
+            display.setText(String.valueOf((long)value));   // 整数ならば小数点以下は取り除く
+        } else {
+            display.setText(String.valueOf(value));
+        }
+    }
+
     public String getDisplay() {
         return display.getText();
     }
