@@ -5,9 +5,13 @@ public class Calc1GoController implements ActionListener {
     private Calc1GoModel model;
     private Calc1GoView view;
 
-    private boolean startNewNum = true;
-    private boolean calcOk = false;
-    private boolean operatorSet = false;
+    enum CalcState {
+        INPUT_FIRST_NUMBER,
+        OPERATOR_SET,
+        INPUT_SECOND_NUMBER,
+        RESULT_SHOWN
+    }
+    private CalcState state = CalcState.INPUT_FIRST_NUMBER;
 
     public Calc1GoController(Calc1GoModel model, Calc1GoView view) {
         this.model = model;
@@ -20,49 +24,69 @@ public class Calc1GoController implements ActionListener {
         String cmd = e.getActionCommand();
         if(cmd.matches("[0-9]")) {
             // 数値ボタン押下
-            String strnum = view.getDisplay();
-            if (startNewNum) {
-                startNewNum = false;
-                view.setDisplay(cmd);
-            }else if (strnum.equals("0")) {
-                view.setDisplay(cmd);
-            } else {
-                view.setDisplay(strnum + cmd);
-            }
-
-            if (operatorSet) {
-                calcOk = true;
-            }
+            doNumber(cmd);
         } else if (cmd.matches("[+\\-*/]")) {
             // 演算子ボタン押下
-            double value = Double.parseDouble(view.getDisplay());
-            if (calcOk) {
-                calcOk = false;
-                model.calculate(value);
-                view.setDisplay(String.valueOf(model.getValue()));
-            } else {
-                model.setValue(value);
-            }
-            model.setOperator(Operator.fromSymbol(cmd));
-            startNewNum = true;
-            operatorSet = true;
+            doOperator(cmd);
         } else if (cmd.equals("=")) {
             // 等号ボタン押下
-            if (calcOk) {
-                calcOk = false;
-                double value = Double.parseDouble(view.getDisplay());
-                model.calculate(value);
-                view.setDisplay(String.valueOf(model.getValue()));
-                startNewNum = true;
-                operatorSet = false;
-            }
+            doEqual();
         } else if (cmd.equals("C")) {
             // クリアボタン押下
-            model.clear();
-            view.setDisplay("0");
-            startNewNum = true;
-            calcOk = false;
-            operatorSet = false;
+            doClear();
         }
+    }
+
+    private void doNumber(String numstr) {
+        switch (state) {
+            case INPUT_FIRST_NUMBER:
+            case INPUT_SECOND_NUMBER:
+                if (view.getDisplay().equals("0")) {
+                    view.setDisplay(numstr);
+                } else {
+                    view.setDisplay(view.getDisplay() + numstr);
+                }
+                break;
+            case OPERATOR_SET:
+                view.setDisplay(numstr);
+                state = CalcState.INPUT_SECOND_NUMBER;
+                break;
+            case RESULT_SHOWN:
+                view.setDisplay(numstr);
+                state = CalcState.INPUT_FIRST_NUMBER;
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void doOperator(String op) {
+        double value = Double.parseDouble(view.getDisplay());
+
+        if (state == CalcState.INPUT_SECOND_NUMBER) {
+            model.calculate(value);
+        } else {
+            model.setValue(value);
+        }
+
+        model.setOperator(Operator.fromSymbol(op));
+        view.setDisplay(String.valueOf(model.getValue()));
+
+        state = CalcState.OPERATOR_SET;
+    }
+
+    private void doEqual() {
+        double value = Double.parseDouble(view.getDisplay());
+        model.calculate(value);
+        view.setDisplay(String.valueOf(model.getValue()));
+
+        state = CalcState.RESULT_SHOWN;
+    }
+
+    private void doClear() {
+        model.clear();
+        view.setDisplay("0");
+
+        state = CalcState.INPUT_FIRST_NUMBER;
     }
 }

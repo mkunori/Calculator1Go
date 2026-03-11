@@ -9,16 +9,16 @@ public enum Operator {
     private final String symbol;
     private final DoubleBinaryOperator operation;
 
-    Operator(String symbol, DoubleBinaryOperator operation) {
+    Operator(String symbol, DoubleBinaryOperator op) {
         this.symbol = symbol;
-        this.operation = operation;
+        this.operation = op;
     }
 
     public double apply(double a, double b) {
         return operation.applyAsDouble(a, b);
     }
 
-    // ボタン入力で文字列で受け取った演算子を列挙定数として取り出し
+    // ボタン入力でStringで受け取った演算子をenumとして取り出し
     public static Operator fromSymbol(String s) {
         for (Operator o : values()) {
             if (o.symbol.equals(s)) {
