@@ -61,7 +61,7 @@ public class Calc1GoController implements ActionListener {
     }
 
     private void doOperator(String op) {
-        double value = Double.parseDouble(view.getDisplay());
+        double value = view.getDisplayValue();
 
         if (state == CalcState.INPUT_SECOND_NUMBER) {
             model.calculate(value);
@@ -76,7 +76,7 @@ public class Calc1GoController implements ActionListener {
     }
 
     private void doEqual() {
-        double value = Double.parseDouble(view.getDisplay());
+        double value = view.getDisplayValue();
         model.calculate(value);
         view.setDisplay(String.valueOf(model.getValue()));
 

@@ -49,6 +49,10 @@ public class Calc1GoView extends JFrame {
         return display.getText();
     }
 
+    public double getDisplayValue() {
+        return Double.parseDouble(display.getText());
+    }
+
     // ボタンにアクションリスナーを付与する
     public void addButtonListener(ActionListener listener) {
         for (JButton b: buttons) {
