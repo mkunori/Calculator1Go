@@ -65,12 +65,19 @@ public class Calc1GoController implements ActionListener {
 
         if (state == CalcState.INPUT_SECOND_NUMBER) {
             model.calculate(value);
-        } else {
+            view.setDisplay(model.getValue());
+        } else if (state == CalcState.INPUT_FIRST_NUMBER ){
             model.setValue(value);
+            //view.setDisplay(model.getValue());
+        } else if (state == CalcState.OPERATOR_SET) {
+            // すでに入力された演算子を上書きする
+            view.replaceOperator(op);
+            model.setOperator(Operator.fromSymbol(op));
+            return;
         }
 
         model.setOperator(Operator.fromSymbol(op));
-        view.setDisplay(model.getValue());
+        view.appendOperator(op);
 
         state = CalcState.OPERATOR_SET;
     }

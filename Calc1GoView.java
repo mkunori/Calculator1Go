@@ -58,7 +58,24 @@ public class Calc1GoView extends JFrame {
     }
 
     public double getDisplayValue() {
-        return Double.parseDouble(display.getText());
+        String text = display.getText();
+
+        // 演算子が含まれている場合は削除する
+        text = text.replaceAll("[+\\-*/]", "").trim();
+
+        return Double.parseDouble(text);
+    }
+
+    public void appendOperator(String op) {
+        display.setText(display.getText() + " " + op);
+    }
+
+    public void replaceOperator(String op) {
+        String text = display.getText();
+        if (text.length() > 0) {
+            text = text.substring(0, text.length() - 2);
+        }
+        display.setText(text + " " + op);
     }
 
     // ボタンにアクションリスナーを付与する
