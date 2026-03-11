@@ -1,3 +1,5 @@
+package model;
+
 public class Calc1GoModel {
     // Modelは計算状態と計算ロジックを持つ
     

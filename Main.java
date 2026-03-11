@@ -1,3 +1,7 @@
+import controller.Calc1GoController;
+import model.Calc1GoModel;
+import view.Calc1GoView;
+
 public class Main {
     public static void main(String[] args) {
         var model = new Calc1GoModel();
