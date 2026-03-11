@@ -1,6 +1,6 @@
 public class Calc1GoModel {
     private double currentValue = 0;
-    private String operator = "";
+    private Operator operator = null;
 
     public void setValue(double value) {
         currentValue = value;
@@ -10,21 +10,16 @@ public class Calc1GoModel {
         return currentValue;
     }
 
-    public void setOperator(String operator) {
+    public void setOperator(Operator operator) {
         this.operator = operator;
     }
 
     public void calculate(double value) {
-        switch (operator) {
-            case "+" -> currentValue += value;
-            case "-" -> currentValue -= value;
-            case "*" -> currentValue *= value;
-            case "/" -> currentValue /= value;
-        }
+        currentValue = operator.apply(currentValue, value);
     }
 
     public void clear() {
         currentValue = 0;
-        operator = "";
+        operator = null;
     }
 }

@@ -43,7 +43,7 @@ public class Calc1GoController implements ActionListener {
             } else {
                 model.setValue(value);
             }
-            model.setOperator(cmd);
+            model.setOperator(Operator.fromSymbol(cmd));
             startNewNum = true;
             operatorSet = true;
         } else if (cmd.equals("=")) {
