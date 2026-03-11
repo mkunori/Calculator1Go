@@ -1,7 +1,7 @@
 Java学習として電卓アプリ1号機を作成。
 
 ## 技術
-- Java + Swing
+- Java
 - Swing
 
 ## 設計
