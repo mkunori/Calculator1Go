@@ -17,6 +17,7 @@ public class Calc1GoController implements ActionListener {
         INPUT_SECOND_NUMBER,
         RESULT_SHOWN
     }
+
     private CalcState state = CalcState.INPUT_FIRST_NUMBER;
 
     public Calc1GoController(Calc1GoModel model, Calc1GoView view) {
@@ -28,7 +29,7 @@ public class Calc1GoController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String cmd = e.getActionCommand();
-        if(cmd.matches("[0-9]")) {
+        if (cmd.matches("[0-9]")) {
             // 数値ボタン押下
             doNumber(cmd);
         } else if (cmd.matches("[+\\-*/]")) {
@@ -72,9 +73,8 @@ public class Calc1GoController implements ActionListener {
         if (state == CalcState.INPUT_SECOND_NUMBER) {
             model.calculate(value);
             view.setDisplay(model.getValue());
-        } else if (state == CalcState.INPUT_FIRST_NUMBER ){
+        } else if (state == CalcState.INPUT_FIRST_NUMBER) {
             model.setValue(value);
-            //view.setDisplay(model.getValue());
         } else if (state == CalcState.OPERATOR_SET) {
             // すでに入力された演算子を上書きする
             view.replaceOperator(op);
@@ -89,8 +89,9 @@ public class Calc1GoController implements ActionListener {
     }
 
     private void doEqual() {
-        if (state != CalcState.INPUT_SECOND_NUMBER) return;
-        
+        if (state != CalcState.INPUT_SECOND_NUMBER)
+            return;
+
         double value = view.getDisplayValue();
         model.calculate(value);
         view.setDisplay(model.getValue());

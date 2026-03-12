@@ -2,7 +2,7 @@ package model;
 
 public class Calc1GoModel {
     // Modelは計算状態と計算ロジックを持つ
-    
+
     private double currentValue = 0;
     private Operator operator;
 
@@ -19,8 +19,9 @@ public class Calc1GoModel {
     }
 
     public void calculate(double value) {
-        if (operator == null) return;
-        
+        if (operator == null)
+            return;
+
         currentValue = operator.apply(currentValue, value);
     }
 

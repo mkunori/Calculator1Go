@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class Calc1GoView extends JFrame {
-    private JTextField display = new JTextField("0");   // 電卓の表示画面
+    private JTextField display = new JTextField("0"); // 電卓の表示画面
     private List<JButton> buttons = new ArrayList<>();
 
     public Calc1GoView() {
@@ -24,17 +24,17 @@ public class Calc1GoView extends JFrame {
 
         // 表示画面を設定する
         display.setEditable(false); // 直接入力は不可
-        display.setHorizontalAlignment(JTextField.RIGHT);   // 右詰め
+        display.setHorizontalAlignment(JTextField.RIGHT); // 右詰め
         display.setFont(new Font("SanSerif", Font.PLAIN, 28));
-        add(display, BorderLayout.NORTH);   // アプリ上部に配置
+        add(display, BorderLayout.NORTH); // アプリ上部に配置
 
         // ボタンをグリッド上に配置する
         JPanel panel = new JPanel(new GridLayout(4, 4));
-        final String[] button = {    // ボタン配置
-            "7", "8", "9", "/",
-            "4", "5", "6", "*",
-            "1", "2", "3", "-",
-            "0", "C", "=", "+"
+        final String[] button = { // ボタン配置
+                "7", "8", "9", "/",
+                "4", "5", "6", "*",
+                "1", "2", "3", "-",
+                "0", "C", "=", "+"
         };
         for (String text : button) {
             var b = new JButton(text);
@@ -43,7 +43,7 @@ public class Calc1GoView extends JFrame {
             panel.add(b);
             buttons.add(b);
         }
-        add(panel, BorderLayout.CENTER);    // アプリ中央に配置
+        add(panel, BorderLayout.CENTER); // アプリ中央に配置
     }
 
     public void setDisplay(String text) {
@@ -51,8 +51,8 @@ public class Calc1GoView extends JFrame {
     }
 
     public void setDisplay(double value) {
-        if (value == (long)value) {
-            display.setText(String.valueOf((long)value));   // 整数ならば小数点以下は取り除く
+        if (value == (long) value) {
+            display.setText(String.valueOf((long) value)); // 整数ならば小数点以下は取り除く
         } else {
             display.setText(String.valueOf(value));
         }
@@ -85,7 +85,7 @@ public class Calc1GoView extends JFrame {
 
     // ボタンにアクションリスナーを付与する
     public void addButtonListener(ActionListener listener) {
-        for (JButton b: buttons) {
+        for (JButton b : buttons) {
             b.addActionListener(listener);
         }
     }
