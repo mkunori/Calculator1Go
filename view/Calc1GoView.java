@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class Calc1GoView extends JFrame {
         // 表示画面を設定する
         display.setEditable(false); // 直接入力は不可
         display.setHorizontalAlignment(JTextField.RIGHT);   // 右詰め
+        display.setFont(new Font("SanSerif", Font.PLAIN, 28));
         add(display, BorderLayout.NORTH);   // アプリ上部に配置
 
         // ボタンをグリッド上に配置する
@@ -37,6 +39,7 @@ public class Calc1GoView extends JFrame {
         for (String text : button) {
             var b = new JButton(text);
             b.setActionCommand(text);
+            b.setFont(new Font("SanSerif", Font.PLAIN, 20));
             panel.add(b);
             buttons.add(b);
         }
