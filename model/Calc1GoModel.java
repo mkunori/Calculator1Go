@@ -13,7 +13,7 @@ public class Calc1GoModel {
 
     /**
      * 現在値を設定する。
-     *
+     * 
      * @param value 設定する値
      */
     public void setValue(double value) {
@@ -22,7 +22,7 @@ public class Calc1GoModel {
 
     /**
      * 現在値を返す。
-     *
+     * 
      * @return 現在値
      */
     public double getValue() {
@@ -31,7 +31,7 @@ public class Calc1GoModel {
 
     /**
      * 現在の演算子を設定する。
-     *
+     * 
      * @param op 設定する演算子
      */
     public void setOperator(Operator op) {
@@ -41,7 +41,7 @@ public class Calc1GoModel {
     /**
      * 現在値と指定された値で計算を行う。
      * 演算子が未設定の場合は何もしない。
-     *
+     * 
      * @param value 計算に使用する値
      */
     public void calculate(double value) {

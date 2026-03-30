@@ -28,8 +28,8 @@ public enum Operator {
 
     /**
      * 演算子を初期化する。
-     *
-     * @param symbol 表示用記号
+     * 
+     * @param symbol    表示用記号
      * @param operation 計算処理
      */
     Operator(String symbol, DoubleBinaryOperator operation) {
@@ -39,7 +39,7 @@ public enum Operator {
 
     /**
      * 2つの値に対して演算を適用する。
-     *
+     * 
      * @param a 左辺値
      * @param b 右辺値
      * @return 演算結果
@@ -50,7 +50,7 @@ public enum Operator {
 
     /**
      * 記号に対応する演算子を返す。
-     *
+     * 
      * @param s 演算子記号
      * @return 対応する演算子
      * @throws IllegalArgumentException 未定義の記号が渡された場合

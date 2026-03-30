@@ -41,9 +41,9 @@ public class Calc1GoController implements ActionListener {
 
     /**
      * コントローラを初期化し、ビューへリスナーを登録する。
-     *
+     * 
      * @param model 使用するモデル
-     * @param view 使用するビュー
+     * @param view  使用するビュー
      */
     public Calc1GoController(Calc1GoModel model, Calc1GoView view) {
         this.model = model;
@@ -53,7 +53,7 @@ public class Calc1GoController implements ActionListener {
 
     /**
      * ボタン押下時のイベントを処理する。
-     *
+     * 
      * @param e アクションイベント
      */
     @Override
@@ -73,7 +73,7 @@ public class Calc1GoController implements ActionListener {
 
     /**
      * 数値ボタン押下時の処理を行う。
-     *
+     * 
      * @param numStr 入力された数字
      */
     private void doNumber(String numStr) {
@@ -104,7 +104,7 @@ public class Calc1GoController implements ActionListener {
 
     /**
      * 演算子ボタン押下時の処理を行う。
-     *
+     * 
      * @param op 入力された演算子
      */
     private void doOperator(String op) {

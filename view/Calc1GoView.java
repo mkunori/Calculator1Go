@@ -38,8 +38,12 @@ public class Calc1GoView extends JFrame {
         add(display, BorderLayout.NORTH);
 
         JPanel panel = new JPanel(new GridLayout(4, 4));
-        final String[] buttonTexts =
-                {"7", "8", "9", "/", "4", "5", "6", "*", "1", "2", "3", "-", "0", "C", "=", "+"};
+        final String[] buttonTexts = {
+                "7", "8", "9", "/",
+                "4", "5", "6", "*",
+                "1", "2", "3", "-",
+                "0", "C", "=", "+"
+        };
 
         for (String text : buttonTexts) {
             var b = new JButton(text);
@@ -54,7 +58,7 @@ public class Calc1GoView extends JFrame {
 
     /**
      * 表示欄に文字列を設定する。
-     *
+     * 
      * @param text 表示する文字列
      */
     public void setDisplay(String text) {
@@ -64,7 +68,7 @@ public class Calc1GoView extends JFrame {
     /**
      * 表示欄に数値を設定する。
      * 整数として表現できる場合は小数点以下を省略する。
-     *
+     * 
      * @param value 表示する値
      */
     public void setDisplay(double value) {
@@ -77,7 +81,7 @@ public class Calc1GoView extends JFrame {
 
     /**
      * 表示欄の文字列を返す。
-     *
+     * 
      * @return 表示欄の文字列
      */
     public String getDisplay() {
@@ -87,7 +91,7 @@ public class Calc1GoView extends JFrame {
     /**
      * 表示欄に表示されている数値部分を取得する。
      * 演算子が含まれている場合は取り除いてから数値へ変換する。
-     *
+     * 
      * @return 表示欄の数値
      * @throws NumberFormatException 表示内容が数値に変換できない場合
      */
@@ -99,7 +103,7 @@ public class Calc1GoView extends JFrame {
 
     /**
      * 表示欄の右端に演算子を追加する。
-     *
+     * 
      * @param op 追加する演算子
      */
     public void appendOperator(String op) {
@@ -108,7 +112,7 @@ public class Calc1GoView extends JFrame {
 
     /**
      * 表示欄の右端の演算子を別の演算子で上書きする。
-     *
+     * 
      * @param op 新しく表示する演算子
      */
     public void replaceOperator(String op) {
@@ -121,7 +125,7 @@ public class Calc1GoView extends JFrame {
 
     /**
      * すべてのボタンにアクションリスナーを登録する。
-     *
+     * 
      * @param listener 登録するリスナー
      */
     public void addButtonListener(ActionListener listener) {
