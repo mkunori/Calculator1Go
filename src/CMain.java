@@ -1,11 +1,11 @@
-import controller.Calc1GoController;
-import model.Calc1GoModel;
-import view.Calc1GoView;
+import controller.CController;
+import model.CModel;
+import view.CView;
 
 /**
  * 電卓アプリケーションを起動するメインクラス。
  */
-public class Main {
+public class CMain {
 
     /**
      * アプリケーションを起動する。
@@ -13,9 +13,9 @@ public class Main {
      * @param args コマンドライン引数
      */
     public static void main(String[] args) {
-        var model = new Calc1GoModel();
-        var view = new Calc1GoView();
-        new Calc1GoController(model, view);
+        var model = new CModel();
+        var view = new CView();
+        new CController(model, view);
         view.setVisible(true);
     }
 }

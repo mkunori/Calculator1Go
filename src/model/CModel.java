@@ -3,7 +3,7 @@ package model;
 /**
  * 電卓の計算状態と計算ロジックを管理するモデルクラス。
  */
-public class Calc1GoModel {
+public class CModel {
 
     /** 現在の計算値。 */
     private double currentValue = 0;

@@ -1,8 +1,8 @@
 package controller;
 
-import model.Calc1GoModel;
+import model.CModel;
 import model.Operator;
-import view.Calc1GoView;
+import view.CView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,13 +10,13 @@ import java.awt.event.ActionListener;
 /**
  * 電卓アプリケーションの入力制御を担当するコントローラクラス。
  */
-public class Calc1GoController implements ActionListener {
+public class CController implements ActionListener {
 
     /** 計算状態と計算処理を保持するモデル。 */
-    private final Calc1GoModel model;
+    private final CModel model;
 
     /** 画面表示を担当するビュー。 */
-    private final Calc1GoView view;
+    private final CView view;
 
     /**
      * 電卓の入力状態を表す列挙型。
@@ -45,7 +45,7 @@ public class Calc1GoController implements ActionListener {
      * @param model 使用するモデル
      * @param view  使用するビュー
      */
-    public Calc1GoController(Calc1GoModel model, Calc1GoView view) {
+    public CController(CModel model, CView view) {
         this.model = model;
         this.view = view;
         view.addButtonListener(this);

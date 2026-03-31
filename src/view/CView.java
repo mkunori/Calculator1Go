@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 /**
  * 電卓アプリケーションの画面表示を担当するビュークラス。
  */
-public class Calc1GoView extends JFrame {
+public class CView extends JFrame {
 
     /** 電卓の表示欄。 */
     private final JTextField display = new JTextField("0");
@@ -26,8 +26,8 @@ public class Calc1GoView extends JFrame {
     /**
      * 電卓画面を初期化する。
      */
-    public Calc1GoView() {
-        setTitle("Calculator-1Go");
+    public CView() {
+        setTitle("Calculator");
         setSize(300, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
